@@ -26,7 +26,8 @@ public class Movement : MonoBehaviour
         {
             //Mueve de forma permanente al jugador hacia la derecha
             transform.Translate(Vector2.right * (maxSpeed * Time.deltaTime));
-            isGronded = Physics2D.CircleCast(playerRb.position, 2 ,Vector2.down, groundCheckRay, layerMask: 1 << 3);
+            isGronded = Physics2D.Raycast(playerRb.position,Vector2.down, groundCheckRay, layerMask: 1 << 3);
+            
         
             //Salto del jugador
             if (Input.GetKeyDown(KeyCode.Space) && isGronded || Input.GetKeyDown(KeyCode.W) && isGronded)
@@ -40,5 +41,6 @@ public class Movement : MonoBehaviour
                 playerRb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
             }
         }
+        //Debug.DrawRay(playerRb.position, Vector2.down * groundCheckRay, Color.red);
     }
 }

@@ -10,10 +10,10 @@ public class MoveCamera : MonoBehaviour
     private GameObject player;
 
     public GameManager manager;
+    public AudioSource gameOverSFX;
 
     private void Start()
     {
-        manager = FindObjectOfType<GameManager>();
         player = GameObject.FindWithTag("Player");
         active = false;
     }
@@ -30,6 +30,7 @@ public class MoveCamera : MonoBehaviour
         {
             if (gameOver)
             {
+                gameOverSFX.Play();
                 active = true;
                 manager.isPlaying = false;
             }

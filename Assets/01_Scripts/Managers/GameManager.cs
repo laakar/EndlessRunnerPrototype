@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI currentScore;
 
     public GameObject canvaUI;
-    
+    public AudioSource extraPtsSfx;
+
     public int scorePerS = 6;
     private int seconds;
     private int minutes;
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
         
         if (scoreTimer <= 0)
         {
+            extraPtsSfx.Play();
             score += 100;
             scoreTimer = 10f;
         }
